@@ -38,7 +38,7 @@ public class SpeedingTicketGUI
 	//Menu buttons
 	private JButton btnOpenTickets, btnNewTicket, btnExit;
 	//New ticket buttons
-	private JButton btnMainExit, btnCreateTicket, btnSaveTicket, btnBrowseTickets;
+	private JButton btnHome, btnMainExit, btnCreateTicket, btnSaveTicket, btnBrowseTickets;
 	//Ticket browser labels
 	private JLabel lblBrowseTitle, lblDisplaySpeedOvr, lblDisplaySpeedLimit, lblDisplayReg, lblDisplayTicket;
 	//Ticket browser buttons
@@ -268,7 +268,7 @@ public class SpeedingTicketGUI
 
 		//Start of labels for main screen
 		lblMainTitle = new JLabel("Create New Speeding Ticket", SwingConstants.CENTER);
-		gbc.gridx = 1;
+		gbc.gridx = 2;
 		gbc.gridy = 1;
 		gbc.gridwidth = 2;
 		gbc.gridheight = 1;
@@ -410,6 +410,15 @@ public class SpeedingTicketGUI
 		gbc.fill = GridBagConstraints.BOTH;
 		btnBrowseTickets.addActionListener(new openTicketBrowse());
 		createTicketPanel.add(btnBrowseTickets, gbc);
+
+		btnHome = new JButton("Home");
+		gbc.gridx = 1;
+		gbc.gridy = 1;
+		gbc.gridwidth = 1;
+		gbc.gridheight = 1;
+		gbc.fill = GridBagConstraints.BOTH;
+		btnHome .addActionListener(new goHome());
+		createTicketPanel.add(btnHome, gbc);
 	}
 
 	/**
@@ -673,6 +682,16 @@ public class SpeedingTicketGUI
 			display.addTickets();
 			currentTicket = ticket.getFirstTicket();
 			setLabels();
+		}
+	}
+
+	class goHome implements ActionListener
+	{
+		public void actionPerformed(ActionEvent event)
+		{
+			menuFrame.setVisible(true);
+			createTicketFrame.setVisible(false);
+			browseFrame.setVisible(false);
 		}
 	}
 

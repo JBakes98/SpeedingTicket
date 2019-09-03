@@ -52,7 +52,7 @@ public class TicketMethods
 			ticket = "The driver is disqualified and recieves a �1000 fine.";	
 		}
 
-		else if (speedOver > 15 )
+		else if (speedOver >= 15 )
 		{
 			ticket = "The driver recieves 3 points to their license and a �150 fine.";
 		}

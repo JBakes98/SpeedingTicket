@@ -32,6 +32,7 @@ public class SpeedingTicketGUI
 	private JTextField txtDriverReg;
 	//New ticket label
 	private JLabel lblTicket, lblMainTitle, lblSpeedLmt, lblDriverSpd, lblSpeedOver, lblDriverReg;
+
 	/**
 	 * These are the spinner models used to create the spinners
 	 * used on the createTicketPanel.
@@ -79,6 +80,7 @@ public class SpeedingTicketGUI
 		createTicketLabels();
 		menuLabels();
 		browseLabels();
+		driverLabels();
 
 		//Creates form text fields
 		createTicketTxtField();
@@ -87,6 +89,7 @@ public class SpeedingTicketGUI
 		menuBtns();
 		createTicketBtns();
 		browseBtns();
+		driverBtns();
 
 		//Creates form spinners
 		createSpinners();
@@ -110,13 +113,20 @@ public class SpeedingTicketGUI
 	 * TicketList. It does this by using the get methods from the class Ticket
 	 * to get the relevant data for each label.
 	 */
-	public void setLabels()
+	public void setTicketLabels()
 	{
 		//Sets labels to the relevant ticket info
 		lblDisplaySpeedOvr.setText("Speed over limit: " + currentTicket.getSpeedOver());
 		lblDisplaySpeedLimit.setText("Area speed limit: " + currentTicket.getSpeedLimit());
 		lblDisplayReg.setText("Driver registration: " + currentTicket.getDriverReg());
 		lblDisplayTicket.setText("Ticket: " + currentTicket.getTicket());
+	}
+
+	public void setDriveLabels()
+	{
+		lblDisplayFirstName.setText("First Name: " + currentDriver.getFirstName());
+		lblDisplayLastName.setText("Last Name: " + currentDriver.getLastName());
+		lblDisplayLicense.setText("License: " + currentDriver.getLicenseNum());
 	}
 
 	/**
@@ -132,7 +142,7 @@ public class SpeedingTicketGUI
 		Color backColour = new Color(197, 215, 218);
 
 		//Creates forms and panels
-		menuFrame = new JFrame("Border layour");
+		menuFrame = new JFrame("Border layout");
 		menuFrame.setTitle("Speeding Ticket");
 		menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		menuFrame.setSize(500, 600);
@@ -198,17 +208,17 @@ public class SpeedingTicketGUI
 //		btnOpenTickets.addActionListener(new openTicketBrowse());
 //		menuPanel.add(btnOpenTickets, gbc);
 
-//		btnOpenDrivers = new JButton("Open Drivers");
-//		gbc.gridx = 1;
-//		gbc.gridy = 3;
-//		gbc.gridwidth = 1;
-//		gbc.gridheight = 1;
-//		gbc.anchor = GridBagConstraints.NORTHWEST;
-//		gbc.weightx = 1;
-//		gbc.weighty = 1;
-//		gbc.fill = GridBagConstraints.BOTH;
-//		btnOpenTickets.addActionListener(new openDriverBrowse());
-//		menuPanel.add(btnOpenDrivers, gbc);
+		btnOpenDrivers = new JButton("Open Drivers");
+		gbc.gridx = 1;
+		gbc.gridy = 3;
+		gbc.gridwidth = 1;
+		gbc.gridheight = 1;
+		gbc.anchor = GridBagConstraints.NORTHWEST;
+		gbc.weightx = 1;
+		gbc.weighty = 1;
+		gbc.fill = GridBagConstraints.BOTH;
+		btnOpenDrivers.addActionListener(new openDriverBrowse());
+		menuPanel.add(btnOpenDrivers, gbc);
 
 		btnNewTicket = new JButton("Create Tickets");
 		gbc.gridx = 3;
@@ -617,13 +627,13 @@ public class SpeedingTicketGUI
 		lblDisplaySpeedLimit.setFont(label);
 		driversPanel.add(lblDisplayLastName, gbc);
 
-		lblDisplayDOB = new JLabel("placeholder", SwingConstants.CENTER);
-		gbc.gridx = 1;
-		gbc.gridy = 4;
-		gbc.gridwidth = 4;
-		gbc.fill = GridBagConstraints.BOTH;
-		lblDisplayDOB.setFont(label);
-		driversPanel.add(lblDisplayDOB, gbc);
+//		lblDisplayDOB = new JLabel("placeholder", SwingConstants.CENTER);
+//		gbc.gridx = 1;
+//		gbc.gridy = 4;
+//		gbc.gridwidth = 4;
+//		gbc.fill = GridBagConstraints.BOTH;
+//		lblDisplayDOB.setFont(label);
+//		driversPanel.add(lblDisplayDOB, gbc);
 
 		lblDisplayLicense = new JLabel("placeholder", SwingConstants.CENTER);
 		gbc.gridx = 1;
@@ -828,7 +838,7 @@ public class SpeedingTicketGUI
 			//current ticket to the first and sets the labels for the first ticket
 			displayTicket.addTickets();
 			currentTicket = ticket.getFirstTicket();
-			setLabels();
+			setTicketLabels();
 		}
 	}
 
@@ -870,7 +880,7 @@ public class SpeedingTicketGUI
 
 			displayDriver.addDrivers();
 			currentDriver = driver.getFirstDriver();
-			setLabels();
+			setDriveLabels();
 		}
 	}
 
@@ -879,6 +889,7 @@ public class SpeedingTicketGUI
 		public void actionPerformed(ActionEvent event)
 		{
 			currentDriver = displayDriver.getFirstDriver();
+			setDriveLabels();
 		}
 	}
 
@@ -887,6 +898,7 @@ public class SpeedingTicketGUI
 		public void actionPerformed(ActionEvent event)
 		{
 			currentDriver = displayDriver.getLastDriver();
+			setDriveLabels();
 		}
 	}
 
@@ -895,6 +907,7 @@ public class SpeedingTicketGUI
 		public void actionPerformed(ActionEvent event)
 		{
 			currentDriver = displayDriver.getNextDriver();
+			setDriveLabels();
 		}
 	}
 
@@ -903,6 +916,7 @@ public class SpeedingTicketGUI
 		public void actionPerformed(ActionEvent event)
 		{
 			currentDriver = displayDriver.getPrevDriver();
+			setDriveLabels();
 		}
 	}
 
@@ -918,7 +932,7 @@ public class SpeedingTicketGUI
 		{
 			//Calls the getFirstTicket method from class TicketList and updates labels
 			currentTicket = displayTicket.getFirstTicket();
-			setLabels();
+			setTicketLabels();
 		}
 	}
 
@@ -934,7 +948,7 @@ public class SpeedingTicketGUI
 		{
 			//Calls the getLastTicket method from class TicketList and updates labels
 			currentTicket = displayTicket.getLastTicket();
-			setLabels();
+			setTicketLabels();
 		}
 	}
 
@@ -950,7 +964,7 @@ public class SpeedingTicketGUI
 		{
 			//Calls the getNextTicket method from class TicketList and updates labels
 			currentTicket = displayTicket.getNextTicket();
-			setLabels();
+			setTicketLabels();
 		}
 	}
 
@@ -966,7 +980,7 @@ public class SpeedingTicketGUI
 		{
 			//Calls the getPrevTicket method from class TicketList and updates labels
 			currentTicket = displayTicket.getPrevTicket();
-			setLabels();
+			setTicketLabels();
 		}
 	}
 

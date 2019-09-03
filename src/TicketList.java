@@ -19,7 +19,7 @@ import java.util.Scanner;
 
 public class TicketList 
 {
-	private ArrayList<Ticket> TicketList = new ArrayList<Ticket>();
+	private ArrayList<Ticket> TicketList = new ArrayList<>();
 	private int ticketNum = 0;
 	private String driverReg, ticket, speedLimit, speedOver;
 	

@@ -5,12 +5,13 @@ public class Driver {
     private Date DOB;
     private String address;
 
-    public Driver(String firstName, String lastName, String licenseNum, Date DOB, String address)
+    public Driver(String firstName, String lastName, String licenseNum, //Date DOB,
+         String address)
     {
         this.firstName = firstName;
         this.lastName = lastName;
         this.licenseNum = licenseNum;
-        this.DOB = DOB;
+        //this.DOB = DOB;
         this.address = address;
     }
 

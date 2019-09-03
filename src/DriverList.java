@@ -8,13 +8,15 @@ import java.util.Scanner;
 public class DriverList {
 
     private ArrayList<Driver> DriverList = new ArrayList<>();
-    private int driverNum;
+    private int driverNum = 0;
     private String firstName, lastName, licenseNum, address;
-    private Date DOB;
+    //private Date DOB;
 
     public DriverList() {
-        DriverList.add(new Driver("Josh", "Baker", "testLic123", new Date(), "Test address"));
-        DriverList.add(new Driver("Test", "Driver", "testLic234", new Date(), "Test address two"));
+        DriverList.add(new Driver("Josh", "Baker", "testLic123", //new Date(),
+                "Test address"));
+        DriverList.add(new Driver("Test", "Driver", "testLic234", //new Date(),
+                "Test address two"));
     }
 
     public void addDrivers() {
@@ -24,7 +26,7 @@ public class DriverList {
                 firstName = in.nextLine();
                 lastName = in.nextLine();
                 licenseNum = in.nextLine();
-                DOB = new Date();
+               // DOB = new Date();
                 address = in.nextLine();
             }
         } catch (FileNotFoundException e) {

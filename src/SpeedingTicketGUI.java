@@ -95,11 +95,13 @@ public class SpeedingTicketGUI
 		menuFrame.add(menuPanel);
 		createTicketFrame.add(createTicketPanel);
 		browseFrame.add(browsePanel);
+		driversFrame.add(driversPanel);
 
 		//Sets visibility of frames
 		menuFrame.setVisible(true);
 		createTicketFrame.setVisible(false);
 		browseFrame.setVisible(false);
+		driversFrame.setVisible(false);
 	}
 
 	/**
@@ -196,17 +198,17 @@ public class SpeedingTicketGUI
 //		btnOpenTickets.addActionListener(new openTicketBrowse());
 //		menuPanel.add(btnOpenTickets, gbc);
 
-		btnOpenDrivers = new JButton("Open Drivers");
-		gbc.gridx = 1;
-		gbc.gridy = 3;
-		gbc.gridwidth = 1;
-		gbc.gridheight = 1;
-		gbc.anchor = GridBagConstraints.NORTHWEST;
-		gbc.weightx = 1;
-		gbc.weighty = 1;
-		gbc.fill = GridBagConstraints.BOTH;
-		btnOpenTickets.addActionListener(new openDriverBrowse());
-		menuPanel.add(btnOpenDrivers, gbc);
+//		btnOpenDrivers = new JButton("Open Drivers");
+//		gbc.gridx = 1;
+//		gbc.gridy = 3;
+//		gbc.gridwidth = 1;
+//		gbc.gridheight = 1;
+//		gbc.anchor = GridBagConstraints.NORTHWEST;
+//		gbc.weightx = 1;
+//		gbc.weighty = 1;
+//		gbc.fill = GridBagConstraints.BOTH;
+//		btnOpenTickets.addActionListener(new openDriverBrowse());
+//		menuPanel.add(btnOpenDrivers, gbc);
 
 		btnNewTicket = new JButton("Create Tickets");
 		gbc.gridx = 3;
